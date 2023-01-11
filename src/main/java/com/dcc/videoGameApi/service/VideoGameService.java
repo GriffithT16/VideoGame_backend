@@ -5,9 +5,9 @@ import com.dcc.videoGameApi.repository.VideoGameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
 
 @Transactional
 @Service
@@ -20,5 +20,10 @@ public class VideoGameService {
         return videoGameRepository.count();
     }
 
+    public List<VideoGame> GetAllGames() {return videoGameRepository.findAll(); }
 
+    public VideoGame getVideoGameById(Integer id) {
+        return videoGameRepository.findById(id).orElse(null);
+
+    }
 }
